@@ -2,6 +2,7 @@
 
 ### Get Transaction Test
 GET http://localhost:8080/transaction/63e05d1e4b81be01fcb1946a HTTP/1.1
+apiKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N
 
 ### Post Transaction Test
 POST http://localhost:8080/transaction HTTP/1.1
