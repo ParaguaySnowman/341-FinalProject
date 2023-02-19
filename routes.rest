@@ -51,7 +51,7 @@ content-type: application/json
 //DELETE
 //DON'T FORGET to update transaction id in the URL!
 ###
-DELETE http://localhost:8080/transaction/63f186dbc2e43e101749131b HTTP/1.1
+DELETE http://localhost:8080/transaction/63f1908baf901cc81ffaec4f HTTP/1.1
 content-type: application/json
 
 {
