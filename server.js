@@ -48,6 +48,20 @@ app.put('/transaction/:id', async (req, res) => {
   }
 });
 
+// DELETE
+app.delete('/transaction/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deletedTransaction = await Transaction.findByIdAndDelete(id);
+    if (!deletedTransaction) {
+      return res.status(404).send('Transaction not found');
+    }
+    res.send(deletedTransaction);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
