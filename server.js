@@ -1,66 +1,26 @@
 const express = require('express');
 const db = require('./db');
-const Transaction = require('./models/transaction');
+const transactionController = require('./controllers/transactionController');
 
 const app = express();
 const port = 8080;
 
 app.use(express.json());
 
-//POST - CREATE
-app.post('/transaction', async (req, res) => {
-  try {
-    const transaction = new Transaction(req.body);
-    const result = await transaction.save();
-    res.send(result);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
+// POST /transaction
+app.post('/transaction', transactionController.createTransaction);
 
-//GET - READ
-// Route to get transaction by amount
-app.get('/transaction/:amount', async (req, res) => {
-  try {
-    const amount = req.params.amount;
-    const transaction = await Transaction.findOne({ amount: amount });
-    if (!transaction) {
-      return res.status(404).send('Transaction not found');
-    }
-    res.send(transaction);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
+// GET /transaction/:id
+app.get('/transaction/:id', transactionController.getTransactionById);
 
-//PUT - UPDATE
-app.put('/transaction/:id', async (req, res) => {
-  try {
-    const transaction = await Transaction.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    if (!transaction) {
-      return res.status(404).send('Transaction not found');
-    }
-    res.send(transaction);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
+// GET /transaction
+app.get('/transaction', transactionController.getAllTransactions);
 
-// DELETE
-app.delete('/transaction/:id', async (req, res) => {
-  try {
-    const id = req.params.id;
-    const deletedTransaction = await Transaction.findByIdAndDelete(id);
-    if (!deletedTransaction) {
-      return res.status(404).send('Transaction not found');
-    }
-    res.send(deletedTransaction);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
+// PUT /transaction/:id
+app.put('/transaction/:id', transactionController.updateTransaction);
+
+// DELETE /transaction/:id
+app.delete('/transaction/:id', transactionController.deleteTransaction);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
