@@ -47,3 +47,19 @@ content-type: application/json
   "account": 101,
   "taxRelated": true
 }
+
+//DELETE
+//DON'T FORGET to update transaction id in the URL!
+###
+DELETE http://localhost:8080/transaction/63f17f71945f91a0d76a097e HTTP/1.1
+content-type: application/json
+
+{
+  "amount": 1.01,
+  "date": "1/1/2000",
+  "merchant": "Walmart",
+  "category": "groceries",
+  "description": "null",
+  "account": 101,
+  "taxRelated": true
+}
