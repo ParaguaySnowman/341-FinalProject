@@ -1,5 +1,41 @@
+
+// CREATE
 ###
-POST http://localhost:8080/transactions HTTP/1.1
+POST http://localhost:8080/transaction HTTP/1.1
+content-type: application/json
+
+{
+  "amount": 1.01,
+  "date": "1/1/2000",
+  "merchant": "Walmart",
+  "category": "groceries",
+  "description": "null",
+  "account": 101,
+  "taxRelated": true
+}
+
+//READ
+###
+GET http://localhost:8080/transaction/1.01 HTTP/1.1
+
+//UPDATE Transactions Test
+###
+PUT http://localhost:8080/transaction/63e83e0bfad76c932d8d80dd HTTP/1.1
+content-type: application/json
+
+{
+  "amount": 1.02,
+  "date": "1/2/2000",
+  "merchant": "Walmart2",
+  "category": "groceries2",
+  "description": "null2",
+  "account": 102,
+  "taxRelated": false
+}
+
+//UPDATE Revert Changes
+###
+PUT http://localhost:8080/transaction/63e83e0bfad76c932d8d80dd HTTP/1.1
 content-type: application/json
 
 {
