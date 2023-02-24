@@ -1,5 +1,6 @@
 const Transaction = require('../models/transaction');
 
+//Add new transaction
 // POST /transaction
 const createTransaction = async (req, res) => {
   try {
@@ -11,6 +12,7 @@ const createTransaction = async (req, res) => {
   }
 };
 
+//Find Transaction by id
 // GET /transaction/:id
 const getTransactionById = async (req, res) => {
   try {
@@ -25,6 +27,7 @@ const getTransactionById = async (req, res) => {
   }
 };
 
+//Return all transactions
 // GET /transaction
 const getAllTransactions = async (req, res) => {
   try {
@@ -35,6 +38,31 @@ const getAllTransactions = async (req, res) => {
   }
 };
 
+//Find transaction(s) by amount
+// GET /transaction?amount=<value>
+const getTransactionsByAmount = async (req, res) => {
+  try {
+    const amount = req.query.amount;
+    const transactions = await Transaction.find({ amount: amount });
+    res.send(transactions);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+//Find transaction by account
+// GET /transaction/account/:accountId
+const getTransactionsByAccount = async (req, res) => {
+  try {
+    const accountId = req.params.accountId;
+    const transactions = await Transaction.find({ accountId: accountId });
+    res.send(transactions);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+//Update transaction info
 // PUT /transaction/:id
 const updateTransaction = async (req, res) => {
   try {
@@ -51,6 +79,7 @@ const updateTransaction = async (req, res) => {
   }
 };
 
+//Delete Transaction
 // DELETE /transaction/:id
 const deleteTransaction = async (req, res) => {
   try {
@@ -71,4 +100,6 @@ module.exports = {
   getAllTransactions,
   updateTransaction,
   deleteTransaction,
+  getTransactionsByAmount,
+  getTransactionsByAccount,
 };
