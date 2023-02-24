@@ -1,3 +1,6 @@
+//////////////////////////////////////////Local Host Test Routes///////////////////////////////////
+
+// TRANSACTIONS //
 
 // CREATE
 ###
@@ -14,9 +17,21 @@ content-type: application/json
   "taxRelated": true
 }
 
+
 //READ
+
+//Get Transaction by id
 ###
-GET http://localhost:8080/transaction/1.01 HTTP/1.1
+GET http://localhost:8080/transaction/63e83e0bfad76c932d8d80dd HTTP/1.1
+
+//Get Transaction by amount
+###
+GET http://localhost:8080/transaction/?amount=1.01 HTTP/1.1
+
+//Get Transaction by account
+###
+GET http://localhost:8080/transaction/?account=101 HTTP/1.1
+
 
 //UPDATE Transactions Test
 ###
@@ -51,7 +66,129 @@ content-type: application/json
 //DELETE
 //DON'T FORGET to update transaction id in the URL!
 ###
-DELETE http://localhost:8080/transaction/63f1908baf901cc81ffaec4f HTTP/1.1
+DELETE http://localhost:8080/transaction/63f81d6d7471ba8b238ec0a9 HTTP/1.1
+
+
+// ACCOUNTS //
+
+// CREATE
+###
+POST http://localhost:8080/account HTTP/1.1
+content-type: application/json
+
+{
+  "institution": "Wells Fargo",
+  "accountNumber": 1000000001
+}
+
+
+//READ
+
+//Get Account by id
+###
+GET http://localhost:8080/account/63e05eef4b81be01fcb1946d HTTP/1.1
+
+//Get Account by Number
+###
+GET http://localhost:8080/account/?number=1000000001 HTTP/1.1
+
+
+//UPDATE Account Test
+###
+PUT http://localhost:8080/account/63e05eef4b81be01fcb1946d HTTP/1.1
+content-type: application/json
+
+{
+  "institution": "Chase Bank",
+  "accountNumber": 1000000002
+}
+
+//UPDATE Revert Changes
+###
+PUT http://localhost:8080/account/63e05eef4b81be01fcb1946d HTTP/1.1
+content-type: application/json
+
+{
+  "institution": "Wells Fargo",
+  "accountNumber": 1000000001
+}
+
+
+//DELETE
+//DON'T FORGET to update transaction id in the URL!
+###
+DELETE http://localhost:8080/account/63f8244b961a66c7582125ab HTTP/1.1
+content-type: application/json
+
+
+////////////////////////////////Render Routes/////////////////////////////
+
+// CREATE
+###
+POST https://cse341finalproject.onrender.com/transaction HTTP/1.1
+content-type: application/json
+
+{
+  "amount": 1.01,
+  "date": "1/1/2000",
+  "merchant": "Walmart",
+  "category": "groceries",
+  "description": "null",
+  "account": 101,
+  "taxRelated": true
+}
+
+
+//READ
+
+//Get Transaction by id
+###
+GET https://cse341finalproject.onrender.com/transaction/63e83e0bfad76c932d8d80dd HTTP/1.1
+
+//Get Transaction by amount
+###
+GET https://cse341finalproject.onrender.com/transaction/?amount=1.01 HTTP/1.1
+
+//Get Transaction by account
+###
+GET https://cse341finalproject.onrender.com/transaction/?account=101 HTTP/1.1
+
+
+//UPDATE Transactions Test
+###
+PUT https://cse341finalproject.onrender.com/transaction/63e83e0bfad76c932d8d80dd HTTP/1.1
+content-type: application/json
+
+{
+  "amount": 1.02,
+  "date": "1/2/2000",
+  "merchant": "Walmart2",
+  "category": "groceries2",
+  "description": "null2",
+  "account": 102,
+  "taxRelated": false
+}
+
+//UPDATE Revert Changes
+###
+PUT https://cse341finalproject.onrender.com/transaction/63e83e0bfad76c932d8d80dd HTTP/1.1
+content-type: application/json
+
+{
+  "amount": 1.01,
+  "date": "1/1/2000",
+  "merchant": "Walmart",
+  "category": "groceries",
+  "description": "null",
+  "account": 101,
+  "taxRelated": true
+}
+
+
+//DELETE
+//DON'T FORGET to update transaction id in the URL!
+###
+DELETE https://cse341finalproject.onrender.com/transaction/63f6e98f31259c7d7126ef7c HTTP/1.1
 content-type: application/json
 
 {
