@@ -117,7 +117,7 @@ content-type: application/json
 //DELETE
 //DON'T FORGET to update transaction id in the URL!
 ###
-DELETE http://localhost:8080/account/63f8244b961a66c7582125ab HTTP/1.1
+DELETE http://localhost:8080/account/63f82a2b961a66c7582125b0 HTTP/1.1
 
 ////////////////////////////////Render Routes/////////////////////////////
 

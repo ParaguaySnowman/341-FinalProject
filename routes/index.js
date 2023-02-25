@@ -1,10 +1,10 @@
 const express = require('express');
-const transactionRouter = require('./transaction');
-const accountRouter = require('./account');
+const transactionRouter = require('./transactionRoutes');
+const accountRouter = require('./accountRoutes');
 
 const router = express.Router();
 
-router.use('/transaction', transactionRouter);
-router.use('/account', accountRouter);
+router.use('/transactionRoutes', transactionRouter);
+router.use('/accountRoutes', accountRouter);
 
 module.exports = router;
