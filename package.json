@@ -1,7 +1,6 @@
 {
-  "name": "thirdattemptfinalproject",
+  "name": "cse341finalproject",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -12,12 +11,21 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.9.2",
+    "mongoose": "^6.10.0",
     "nodemon": "^2.0.20",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.1"
   },
   "devDependencies": {
     "swagger-autogen": "^2.23.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParaguaySnowman/341-FinalProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ParaguaySnowman/341-FinalProject/issues"
+  },
+  "homepage": "https://github.com/ParaguaySnowman/341-FinalProject#readme",
+  "description": ""
 }
