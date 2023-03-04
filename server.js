@@ -11,7 +11,9 @@ const swaggerDocument = require('./swagger.json');
 app
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(express.json())
-  .use('/', require('./routes'));
+  .use('/account', require('./routes/account'))
+  .use('/transaction', require('./routes/transaction'));
+
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
