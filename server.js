@@ -7,14 +7,18 @@ const port = 8080;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
+// import OAuth middleware
+const oauth = require('./oauth')(app);
 
 app
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(express.json())
-  .use('/account', require('./routes/account'))
-  .use('/transaction', require('./routes/transaction'));
-
+  // protect routes using OAuth middleware
+  .use('/account', oauth.authenticate, require('./routes/account'))
+  .use('/transaction', oauth.authenticate, require('./routes/transaction'));
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
+module.exports = app;
